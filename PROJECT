@@ -1,3 +1,7 @@
 domain: tran-scending.net
 repo: github.com/trankchung/vault-controller
+resources:
+- group: restarter
+  kind: VaultRestart
+  version: v1
 version: "2"

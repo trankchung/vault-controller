@@ -1,0 +1,71 @@
+
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.2.5
+  creationTimestamp: null
+  name: vaultrestarts.restarter.tran-scending.net
+spec:
+  group: restarter.tran-scending.net
+  names:
+    kind: VaultRestart
+    listKind: VaultRestartList
+    plural: vaultrestarts
+    shortNames:
+    - vrst
+    - vrsts
+    singular: vaultrestart
+  scope: Namespaced
+  subresources:
+    status: {}
+  validation:
+    openAPIV3Schema:
+      description: VaultRestart is the Schema for the vaultrestarts API
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          description: VaultRestartSpec defines the desired state of VaultRestart
+          properties:
+            matchingLabels:
+              additionalProperties:
+                type: string
+              description: Labels to match with pods to delete
+              type: object
+            pollingInterval:
+              description: 'Reconcile interval in ns, s, m, or h units, i.e.: 60s'
+              pattern: ^\d+(ns|s|m|h)$
+              type: string
+          type: object
+        status:
+          description: VaultRestartStatus defines the observed state of VaultRestart
+          properties:
+            index:
+              description: The Vault index saved from last run
+              format: int64
+              type: integer
+          type: object
+      type: object
+  version: v1
+  versions:
+  - name: v1
+    served: true
+    storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

@@ -1,0 +1,20 @@
+# permissions for end users to view vaultrestarts.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: vaultrestart-viewer-role
+rules:
+- apiGroups:
+  - restarter.tran-scending.net
+  resources:
+  - vaultrestarts
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - restarter.tran-scending.net
+  resources:
+  - vaultrestarts/status
+  verbs:
+  - get

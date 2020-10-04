@@ -1,0 +1,11 @@
+apiVersion: restarter.tran-scending.net/v1
+kind: VaultRestart
+metadata:
+  name: restart-on-vault-updates
+  namespace: default
+spec:
+  matchingLabels:
+    app: busybox
+    dependsOn: vault
+  pollingInterval: 10s
+

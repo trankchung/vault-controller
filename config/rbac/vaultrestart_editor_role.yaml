@@ -1,0 +1,24 @@
+# permissions for end users to edit vaultrestarts.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: vaultrestart-editor-role
+rules:
+- apiGroups:
+  - restarter.tran-scending.net
+  resources:
+  - vaultrestarts
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - restarter.tran-scending.net
+  resources:
+  - vaultrestarts/status
+  verbs:
+  - get
